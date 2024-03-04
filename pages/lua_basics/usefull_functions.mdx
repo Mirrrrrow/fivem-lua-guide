@@ -1,0 +1,33 @@
+---
+title: Nutzvolle Funktionen
+---
+# Mathematische Funktionen
+```lua
+local randomNumber = math.random(100)
+-- randomNumber wird eine zufällige Zahl zwischen 1 und 100 zugewiesen
+
+local randomNumber2 = math.random(5, 100)
+-- randomNumber2 wird eine zufällige Zahl zwischen 5 und 100 zugewiesen
+```
+# String Funktionen
+```lua
+local string = "Hallo %s"
+local name = 'Max'
+print(string:format(name))
+-- Dadurch werden die %s in dem String (Platzhalter) ersetzt.
+```
+
+# Variablen Typen erhalten und manipulieren
+```lua
+local strNum = '5'
+print(type(strNum)) -- string
+
+local numNum = 5
+print(type(numNum)) -- number
+
+local newNum = tonumber(strNum)
+print(type(newNum)) -- number
+```
+
+
+

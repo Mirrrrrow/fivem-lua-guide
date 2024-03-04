@@ -1,0 +1,34 @@
+---
+title: Schleifen
+---
+
+# While Schleifen
+Aus dem Namen kann es schon deuten, diese Art der schleifen führen etwas so lange aus, bis die Kondition nicht mehr erfüllt wird.
+```lua
+while condition do
+    -- foobar
+end
+```
+Hier ein Beispiel eine Zählers.
+```lua
+local count = 0
+while count < 10 do
+    count = count + 1
+end
+print('Es wurde bis 10 gezählt!')
+```
+# Repeat Until
+Diese besondere Art der Schleife ist quasi so nutzbar wie die While Schleife.
+```lua
+repeat
+    -- foobar
+until condition
+```
+Hier ein Beispiel für den gleichen Zähler
+```lua
+local count = 0
+repeat
+    count = count + 1
+until count == 10
+print('Es wurde bis 10 gezählt!')
+```

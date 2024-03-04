@@ -1,0 +1,108 @@
+---
+title: Iterations
+---
+# Iterations
+Man könnte diese "art der Loops" auch zu den normalen Schleifen zählen.
+
+# k,v in pairs()
+Diese Art der Iteration loopt durch die gegebene Tabelle durch und man erhält eine key (Schlüssel) und value (den Wert).
+```lua
+local myTable = {
+    { -- Table in einer Table
+        name = 'Max'
+    },
+    {
+        name = 'Tim'
+    }
+}
+
+for k,v in pairs(myTable) do
+    print(v)
+end
+-- Ausgabe:
+-- Max
+-- Tim
+```
+Übrigens: dieser Loop geht nicht sortiert durch die Tabelle. Hier ist ein weiteres Beispiel bei dem der key verwendet wird
+```lua
+local myTable = {
+    max = 16,
+    tim = 19
+}
+
+for name, age in pairs(myTable) do
+    print('Name')
+    print(name)
+    print('Alter')
+    print(age)
+    print('-----')
+end
+
+-- Ausgabe:
+-- Name
+-- max
+-- Alter
+-- 16
+-- -----
+-- Name
+-- tim
+-- Alter
+-- 19
+-- -----
+```
+# k,v in ipairs()
+Dieser Loop ist unterschiedlich zum "normalen" k,v loop. Er macht grundsätzlich das gleiche geht aber sortiert durch eine Tabelle vor. Dieser Loop funktioniert aber nur bei default index. Also standart key.
+```lua
+-- Loop Funktioniert (ipairs)
+local myTable = {
+    1, 2, 3, 4, 5, 6, 7
+}
+local myTable = {
+    {
+        name = 'T'
+    },
+    {
+        name = 'X'
+    }
+}
+
+-- Loop funktioniert nicht (ipairs)
+local myTable = {
+    tim = 1,
+    max = 3
+}
+local myTable = {
+    tim = {
+        age = 16
+    },
+    mario = {
+        age = 57
+    }
+}
+```
+# numeral loop
+Dieser Loop geht alle Zahlen bis zu einem Ziel durch.
+```lua
+for i = base, goal, step do
+    print(i)
+end
+```
+Hier als Beispiel für den Counter von den While Schleifen:
+```lua
+for i = 1, 10, 1 do
+    print(i)
+end
+-- 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+```
+Dieser Loop kann auch durch eine Tabelle gehen:
+mit `#myTable` kriegt man die Länge einer Tabelle.
+```lua
+local myTable = {
+    {name = 'Max'},
+    {name = 'Tim'},
+}
+for i = 1, #myTable, 1 do
+    print(myTable[i].name)
+end
+-- Max, Tim
+```

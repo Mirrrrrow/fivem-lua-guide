@@ -1,0 +1,126 @@
+---
+title: Variablen
+---
+
+# Variablen
+Variablen sind ein fundamentales Konzept im Programmieren. Hier sind zwei Beispiele von Variablen in Lua:
+```lua
+GlobalVariable = 'TEST'
+local scopedVariable = 'test'
+```
+
+## Geltungsbereiche
+
+Die erste Variable ist eine sogennante Globale Variable. Diese gillt im gesammten Projekt, auch Datei- und sogar Ordnerübergreifend. Eine Variable die Local definiert ist hat ein paar Besonderheiten.
+Das Schlüsselwort `local` heißt so viel wie das die Variable local "gescoped" ist bzw. "local" gilt. Der größte Geltungsbereich in Lua ist die Datei. Wenn ganz oben in der Datei eine locale Variable definiert wurde gilt diese in der ganzen Datei.
+Als Faustregel kann man also sagen, das ein Geltungsbereich mit einem Schlüsselwort (z.B if, while, do) beginnt und mit einem anderem (meistens end) endet.
+```lua
+local firstVariable = 'Test'
+
+do
+    local secondVariable = 'Test2'
+    print(firstVariable)
+    print(secondVariable)
+end
+
+print(firstVariable)
+print(secondVariable)
+```
+
+In der Konsole wird nun folgendes ausgegeben:
+- Test
+- Test2
+- Test
+- nil
+
+da der letzte Print auf eine Variable zugreift, die in einem abgetrenten Geltungsbereich definiert wurde.
+
+## Variablentypen
+In Lua gibt es (standardmäßig) nicht besonders viele Datentypen.
+### Zahlen
+Zahlen und Kommazahlen sind in Lua das "gleiche".
+Sie werden ohne Anführungszeichen definiert.
+```lua
+local myNumber = 3
+local myFloatNumber = 3.1415
+```
+### Zeichenketten & Zeichen
+Zeichen und Zeichenketten können beide mit `"x"` oder `'x'` definiert werden.
+```lua
+local myString = 'Hello World'
+```
+### Booleans (Ja / Nein)
+Booleans sind ebenfalls elementar. Sie können entweder `true` oder `false` sein.
+```lua
+local myBoolean = true
+```
+### Tabellen
+Tabellen werden auch oft "key value pairs" genannt. Sie sind also nichts weiteres als eine Ansammlung von Schlüsseln denen einen Wert zugewiesen wird.
+```lua
+local myTable = {
+    name = 'Max',
+    age = 18
+}
+```
+Um auf diese Tabellen zuzugreifen gibt es eine besondere Syntax zu der wir hier später nochmal kommen.
+### Abwesendheit eines Wertes (nil)
+In anderen Programmiersprachen oft als `null` bezeichnet ist die Abwesendheit eines Wertes in Lua `nil`
+```lua
+local notExistingVariable = nil
+```
+### Funktionen
+Funktionen sind ebenso wie Tabellen "besondere" arten von Variablen. Sie haben Parameter und können werte zurückgeben.
+```lua
+function exampleFunction(x,y,z)
+    return x + y + z
+end
+```
+Hier eventuell ein anschauliches Beispiel:
+```lua
+function squareANumber(x)
+    return x*x
+end
+
+print(squareANumber(2)) -- 4
+print(squareANumber(9)) -- 81
+```
+### Auf Variablen zugreifen und diese Manipulieren
+```lua
+local name = 'Max'
+print(name) -- einfacher Zugriff auf die Variable # Ausgabe: Max
+
+name = 'Tim' -- neudefinierung der Variable
+print(name) -- einfacher Zugriff der Variable # Ausgabe: Tim
+```
+```lua
+local myTable = {
+    name = 'Max',
+    age = 19
+}
+
+print(myTable.name) -- Max
+print(myTable['age']) -- 19
+
+myTable.age = 20
+myTable['name'] = 'Tim'
+
+print(myTable['name']) -- Tim
+print(myTable.age) -- 20
+```
+Die erste Schreibweise für Tabellenzugriffe wird bevorzugt, solange der Schlüsselwert nicht variiert.
+```lua
+local key = 'Test'
+local myTable = {
+    Test = 13
+}
+
+print(myTable.key) -- nil
+print(myTable[key]) -- 13
+```
+### Variablen verketten
+Variablen werden mit `..` verkettet.
+```lua
+local name = 'Max'
+local age = 19
+print(name .. ' is ' .. age .. ' years old') -- Max is 19 years old
+```

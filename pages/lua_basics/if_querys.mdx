@@ -1,0 +1,46 @@
+---
+title: If-Abfragen
+---
+
+# Standard if-Abfrage
+```lua
+if condition then
+    -- code 
+end
+```
+Die Kondition kann durch verschiedene Vergleichsoperatoren (`==, >=, >, <, <=, and, or, not`) erstellt werden.
+```lua
+local age = 19
+if age >= 18 then
+    print('Volljährig')
+end
+```
+```lua
+local age = 18
+if age >= 18 and age < 21 then
+    print('Du bist zwischen 18 und 21')
+end
+```
+# If-Else Abfrage
+Wenn man einen Fall hat, bei dem man sollte die Kondition nicht erfüllt werden, einen weiteren Code ausführen will kann man das Schlüsselwort `else` verwenden.
+```lua
+local age = 18
+if age >= 18 then
+    print('Volljährig')
+else
+    print('Minderjährig')
+end
+```
+
+# If Abfrage mit mehreren Konditionen (elseif)
+Man kann auch mehrere Konditionen in einer if-Abfrage haben. Hier ist ein Beispiel dafür.
+```lua
+local name = 'Max'
+if name == 'Max' then
+    print('Du heißt Max')
+elseif name == 'Tim' then
+    print('Du heißt Tim')
+else
+    print('Name stimmt nicht überein')
+end
+```
