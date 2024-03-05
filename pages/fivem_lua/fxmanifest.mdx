@@ -1,0 +1,30 @@
+# FxManifest
+Hier ist ein Beispiel für die [FxManifest](https://docs.fivem.net/docs/scripting-reference/resource-manifest/resource-manifest/). Hier wird nicht so viel erläutert, am besten den Link oben anklicken und sich die Dokumentation durchlesen.
+```lua
+fx_version 'cerulean'
+game 'gta5'
+lua54 'yes'
+use_experimental_fxv2_oal 'yes'
+
+shared_scripts {
+    '@es_extended/imports.lua',
+    '@ox_lib/init.lua',
+    'config.lua'
+}
+
+server_scripts {
+    '@oxmysql/lib/MySQL.lua',
+    'server.lua'
+}
+
+client_script 'client.lua'
+```
+Hier in Stichpunkten ein bisschen was erläutert:
+- `fx_version 'cerulean'` setzt die [FX-Version](https://docs.fivem.net/docs/scripting-reference/resource-manifest/resource-manifest/#fx-version-cerulean-2020-05) fest: cerulean ist die neuste
+- `game 'gta5'` setzt das Spiel fest, für das die Resource gedacht ist.
+- `lua54 'yes'` setzt fest, dass die Resource Lua 5.4 benutzt, dies ist auch für Performance gut und bietet einige neue Features. Hier ist ein Bild über ein Benchmarking mit Lua5.4.
+<img className="self-center" width="750" src='/static/lua54_bench.png'/>
+- `use_experimental_fxv2_oal 'yes'` fxv2_oal ändert die Art und Weise wie Natives ausgeführt werden und wie mit Daten umgegangen wird. Zum Beispiel werden mit fxv2_oal Vektoren nicht mehr automatisch umgewandelt. Es ist aber ebenfalls gut für die Performance, was man im oberigen Benchmark sehen kann.
+- `shared_scripts` sind Scripts, die sowohl auf dem Server als auch auf dem Client laufen.
+- `server_scripts` sind Scripts, die nur auf dem Server laufen.
+- `client_script` sind Scripts, die nur auf dem Client laufen.

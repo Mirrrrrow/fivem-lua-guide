@@ -1,0 +1,29 @@
+# Performance Guide
+Einige Tipps und Tricks, um die Performance zu verbessern, hier ist auch wieder nicht alles ausgeführt aber das wichtigste.
+
+## Variablen Localisieren
+Wenn du eine Variable nur in einer Funktion benötigst, dann definiere sie auch nur in dieser Funktion. Das spart Speicher und Rechenleistung. Das gleiche gillt auch wenn du eine Variable nur in einer Datei oder anderen Scopes used.
+
+## GetPlayerPed(-1) -> PlayerPedId() -> cache.ped
+Viele nutzen heute noch `GetPlayerPed(-1)` um den lokalen Player zu erhalten, was aber absolut nicht gut ist. Die bessere Variante ist es `PlayerPedId()` zu verwenden und wenn du ox_lib usend und es importiert hast dann nutze `cache.ped`.
+
+## GetDistanceBetweenCoords / Vdist - #(vec1- vec2)
+`GetDistanceBetweenCoords` und `Vdist` sowie `Vdist2` sollte man ebenfalls nicht verwenden. Stattdessen kann man ganz normale Mathematik verwenden.
+```lua
+local playerCoords = GetEntityCoords(cache.ped)
+local targetCoords = vec3(3, 7, 1)
+
+local distance = #(playerCoords - targetCoords)
+```
+
+## table.insert -> table[i] = data
+`table.insert` wird ebenfalls oft verwendet, wobei `table[i] = data` doch besser ist.
+```lua
+local myTable = {}
+table.insert(myTable, "Hello") -- bad
+table.insert(myTable, "World") -- bad
+
+myTable[1] = "Hello" -- good
+myTable[2] = "World" -- good
+```
+
